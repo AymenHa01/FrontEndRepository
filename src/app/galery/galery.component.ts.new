@@ -1,0 +1,106 @@
+import { Component, OnInit, HostListener, ElementRef, ViewChild } from '@angular/core';
+import { SArtistService, Artiste, Tableau } from '../../Serives/serviceArtist/s-artist.service';
+
+@Component({
+  selector: 'app-galery',
+  templateUrl: './galery.component.html',
+  styleUrls: ['./galery.component.css']
+})
+export class GaleryComponent implements OnInit {
+  @ViewChild('galleryGrid') galleryGrid: any;
+  
+  searchTerm: string = '';
+  loading: boolean = false;
+  currentSection: string = 'hero';
+  showBackToTop: boolean = false;
+  
+  // Navigation state
+  currentView: 'artists' | 'tableaux' = 'artists';
+  selectedArtist: Artiste | null = null;
+  
+  // Data
+  artists: Artiste[] = [];
+  tableaux: Tableau[] = [];
+  filteredArtists: Artiste[] = [];
+  filteredTableaux: Tableau[] = [];
+
+  constructor(private artistService: SArtistService) { }
+
+  ngOnInit(): void {
+    this.loadArtists();
+    this.checkScroll();
+  }
+
+  loadArtists(): void {
+    this.loading = true;
+    this.artistService.getArtiste().subscribe({
+      next: (artists) => {
+        this.artists = artists;
+        this.filteredArtists = artists;
+        this.loading = false;
+      },
+      error: (error) => {
+        console.error('Error loading artists:', error);
+        this.loading = false;
+      }
+    });
+  }
+
+  loadTableauxByArtist(artistId: number): void {
+    this.loading = true;
+    this.artistService.getTableauxByArtist(artistId).subscribe({
+      next: (tableaux) => {
+        this.tableaux = tableaux;
+        this.filteredTableaux = tableaux;
+        this.currentView = 'tableaux';
+        this.loading = false;
+      },
+      error: (error) => {
+        console.error('Error loading tableaux:', error);
+        this.loading = false;
+      }
+    });
+  }
+
+  selectArtist(artist: Artiste): void {
+    this.selectedArtist = artist;
+    this.loadTableauxByArtist(artist.id);
+  }
+
+  goBackToArtists(): void {
+    this.currentView = 'artists';
+    this.selectedArtist = null;
+    this.tableaux = [];
+    this.filteredTableaux = [];
+  }
+
+  applySearch(): void {
+    if (this.currentView === 'artists') {
+      this.filteredArtists = this.artists.filter(artist => 
+        artist.nom.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        artist.prenom.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    } else {
+      this.filteredTableaux = this.tableaux.filter(tableau =>
+        tableau.titre.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        tableau.description.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    }
+  }
+
+  @HostListener('window:scroll', ['$event'])
+  onScroll() {
+    this.checkScroll();
+  }
+
+  checkScroll() {
+    this.showBackToTop = window.pageYOffset > 300;
+  }
+
+  scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+}

@@ -1,0 +1,88 @@
+<div style="height: 100px;"> </div>
+<div class="participation-container">
+    <!-- Search and Filter Section -->
+    <div class="search-filter-section">
+        <div class="search-box">
+            <input 
+                type="text" 
+                [(ngModel)]="searchTerm" 
+                placeholder="Rechercher..." 
+                class="search-input"
+            >
+            <i class="fas fa-search search-icon"></i>
+        </div>
+        <div class="filter-buttons">
+            <button 
+                *ngFor="let option of filterOptions"
+                [class.active]="selectedFilter === option.value"
+                (click)="selectedFilter = option.value"
+                class="filter-btn"
+            >
+                {{ option.label }}
+            </button>
+        </div>
+    </div>
+
+    <!-- Loading State -->
+    <div *ngIf="loading" class="loading-spinner">
+        <i class="fas fa-spinner fa-spin"></i>
+        Chargement...
+    </div>
+
+    <!-- Error State -->
+    <div *ngIf="error" class="error-message">
+        {{ error }}
+    </div>
+
+    <!-- Content Grid -->
+    <div class="participation-grid" *ngIf="!loading && !error">
+        <div class="participation-card" *ngFor="let item of filteredItems">
+            <!-- Formation Card -->
+            <div class="card" *ngIf="item.formateur">
+                <img [src]="'https://karimablogcontainer.blob.core.windows.net/images/'+item.image" [alt]="item.name" class="card-image">
+                <div class="card-content">
+                    <h3>{{ item.name }}</h3>
+                    <p class="description">{{ item.description }}</p>
+                    <div class="details">
+                        <span><i class="fas fa-user"></i> {{ item.formateur }}</span>
+                        <span><i class="fas fa-clock"></i> {{ item.heures }}h</span>
+                        <span><i class="fas fa-euro-sign"></i> {{ item.prix }}</span>
+                    </div>
+                    <div class="dates">
+                        <span><i class="fas fa-calendar-alt"></i> {{ item.debut | date:'short' }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Atelier Card -->
+            <div class="card" *ngIf="item.atelierName">
+                <img [src]="'https://karimablogcontainer.blob.core.windows.net/images/'+item.image" [alt]="item.name" class="card-image">
+                <div class="card-content">
+                    <h3>{{ item.name }}</h3>
+                    <p class="description">{{ item.description }}</p>
+                    <div class="details">
+                        <span><i class="fas fa-palette"></i> {{ item.atelierName }}</span>
+                        <span><i class="fas fa-euro-sign"></i> {{ item.prix }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event Card -->
+            <div class="card" *ngIf="!item.formateur && !item.atelierName">
+                <img [src]="'https://karimablogcontainer.blob.core.windows.net/images/'+item.image" [alt]="item.name" class="card-image">
+                <div class="card-content">
+                    <h3>{{ item.name }}</h3>
+                    <p class="description">{{ item.description }}</p>
+                    <div class="dates" *ngIf="item.date">
+                        <span><i class="fas fa-calendar-alt"></i> {{ item.date | date:'short' }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Empty State -->
+        <div class="empty-message" *ngIf="filteredItems.length === 0">
+            Aucune participation trouvée
+        </div>
+    </div>
+</div>

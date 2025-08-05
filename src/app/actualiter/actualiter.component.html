@@ -1,0 +1,38 @@
+<p>actualiter works!</p>
+<!-- News Section / Actualités -->
+<section id="news" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h4>Actualités</h4>
+            <h1>Nos dernières nouvelles</h1>
+        </div>
+        <div class="news-container">
+            <!-- Featured News for Marketing -->
+            <div class="news-card featured">
+                <div class="card-image-wrapper">
+                    <img src="https://d26oc3sg82pgk3.cloudfront.net/files/media/edit/image/56545/article_full%403x.jpg" alt="Featured News">
+                    <div class="card-overlay">
+                        <span><i class="fas fa-search-plus"></i></span>
+                    </div>
+                </div>
+                <div class="news-content">
+                    <h3>{{News[0].title}}</h3>
+                   
+                    <p>{{News[0].description}}</p>
+                   
+                </div>
+            </div>
+            <div *ngFor="let news of News.slice(1)">
+                <div class="news-card">
+                    <div class="card-image-wrapper">
+                        <img src="https://d26oc3sg82pgk3.cloudfront.net/files/media/edit/image/56545/article_full%403x.jpg" alt="Featured News">
+                    </div>
+                    <div class="news-content">
+                        <h3>{{news.title}}</h3>
+                        <p>{{news.description}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> 

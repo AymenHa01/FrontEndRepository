@@ -1,0 +1,64 @@
+<app-navbar></app-navbar>
+<div style="height: 60px;"></div>
+
+<div class="main-container">
+    <!-- Search Section -->
+    <div class="search-section">
+        <div class="search-box">
+            <input type="text" class="form-control" placeholder="Rechercher une formation..." [(ngModel)]="searchTerm" (ngModelChange)="filterFormations()">
+            <button class="search-btn">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        <!-- Price Filter -->
+        <div class="price-filter">
+            <input type="number" class="form-control" placeholder="Prix min" [(ngModel)]="minPrice" (ngModelChange)="filterFormations()">
+            <input type="number" class="form-control" placeholder="Prix max" [(ngModel)]="maxPrice" (ngModelChange)="filterFormations()">
+        </div>
+    </div>
+
+    <!-- Results Count -->
+    <div class="results-count">
+        <p>{{ filteredFormations.length }} formation(s) trouvée(s)</p>
+    </div>
+
+    <!-- Formations Grid -->
+    <div class="formations-grid">
+        <div class="formation-card" *ngFor="let formation of filteredFormations | slice:(currentPage-1) * itemsPerPage:currentPage * itemsPerPage">
+            <div class="card">
+                <div class="card-image">
+                    <img [src]="'https://karimablogcontainer.blob.core.windows.net/images/'+formation.image" [alt]="formation.name">
+                    <div class="card-overlay">
+                        <span class="badge">{{ formation.prix }} dt</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">{{ formation.name }}</h3>
+                    <div class="card-info">
+                        <p><i class="fas fa-calendar"></i> {{ formation.startDate | date }}</p>
+                        <p class="description">{{ formation.description }}</p>
+                    </div>
+                    <div class="card-actions">
+                        <button class="action-btn info" (click)="viewFormationDetails(formation)">
+                            Plus d'informations
+                        </button>
+                        <button class="action-btn primary" (click)="navigateToParticipation()">
+                            Participer
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination" *ngIf="totalPages > 1">
+        <button class="page-btn" [disabled]="currentPage === 1" (click)="prevPage()">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <span class="page-info">Page {{ currentPage }} sur {{ totalPages }}</span>
+        <button class="page-btn" [disabled]="currentPage === totalPages" (click)="nextPage()">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+</div>

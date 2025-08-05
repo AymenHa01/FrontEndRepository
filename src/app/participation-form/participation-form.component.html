@@ -1,0 +1,35 @@
+<div class="container my-4">
+    <h2 class="text-center mb-4">Inscription</h2>
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label for="username" class="form-label">Nom d'utilisateur</label>
+            <input type="text" id="username" class="form-control" formControlName="username" required>
+            <div *ngIf="registrationForm.controls['username'].invalid && registrationForm.controls['username'].touched" class="text-danger">
+                Nom d'utilisateur est requis
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" id="email" class="form-control" formControlName="email" required>
+            <div *ngIf="registrationForm.controls['email'].invalid && registrationForm.controls['email'].touched" class="text-danger">
+                Email valide est requis
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="numero" class="form-label">Numéro</label>
+            <input type="number" id="numero" class="form-control" formControlName="numero" required>
+            <div *ngIf="registrationForm.controls['numero'].invalid && registrationForm.controls['numero'].touched" class="text-danger">
+                <!--<ng-container *ngIf="registrationForm.controls['numero'].errors.required">
+                    Numéro d'utilisateur est requis
+                </ng-container>
+                <ng-container *ngIf="registrationForm.controls['numero'].errors?.pattern">
+                    Numéro d'utilisateur doit être composé de 8 chiffres
+                </ng-container>-->
+            </div>
+        </div>        
+        <div class="text-center">
+            <button type="button" class="btn btn-warning me-3" (click)="goBack()">Page précédente</button>
+            <button type="submit" class="btn btn-primary" [disabled]="registrationForm.invalid">S'inscrire</button>
+        </div>
+    </form>
+</div>

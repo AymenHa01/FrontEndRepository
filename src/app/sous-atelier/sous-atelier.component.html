@@ -1,0 +1,53 @@
+
+<app-navbar></app-navbar>
+<div style="height: 60px;"></div>
+
+<div class="main-container">
+    <!-- Search Section -->
+    <div class="search-section">
+        <div class="search-box">
+            <input type="text" class="form-control" placeholder="Rechercher un atelier..." #searchInput>
+            <button class="search-btn" (click)="FilterSousAtelier(searchInput.value)">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Ateliers Grid -->
+    <div class="ateliers-grid">
+        <div class="atelier-card" *ngFor="let atelier of paginatedAteliers">
+            <div class="card">
+                <div class="card-image">
+                    <img [src]="atelier.image" [alt]="atelier.name">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">{{ atelier.name }}</h3>
+                    <div class="card-info">
+                        <p><i class="fas fa-calendar-day"></i> {{ atelier.date }}</p>
+                        <p><i class="fas fa-clock"></i> {{ atelier.time }}</p>
+                        <p><i class="fas fa-level-up-alt"></i> {{ atelier.level }}</p>
+                        <p><i class="fas fa-palette"></i> {{ atelier.description }}</p>
+                        <div class="price-tag">
+                            <i class="fas fa-tags"></i>
+                            <span>{{ atelier.prix }} dinars</span>
+                        </div>
+                    </div>
+                    <button class="participate-btn" (click)="participate(atelier.id)">
+                        Participer à l'atelier
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination" *ngIf="totalPages > 1">
+        <button class="page-btn" [disabled]="currentPage === 1" (click)="changePage(currentPage - 1)">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <span class="page-info">Page {{ currentPage }} sur {{ totalPages }}</span>
+        <button class="page-btn" [disabled]="currentPage === totalPages" (click)="changePage(currentPage + 1)">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+</div>

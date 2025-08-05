@@ -1,0 +1,67 @@
+<app-navbar></app-navbar>
+<div style="height: 60px;"></div>
+
+<div class="event-detail-container" *ngIf="selectedEvent">
+    <!-- Event Header -->
+    <div class="event-header">
+        <h1 class="event-title">{{ selectedEvent.title }}</h1>
+        <div class="event-meta">
+            <span><i class="fas fa-calendar"></i> {{ selectedEvent.date | date:'longDate' }}</span>
+            <span><i class="fas fa-map-marker-alt"></i> {{ selectedEvent.location }}</span>
+        </div>
+    </div>
+
+    <!-- Event Images Section -->
+    <div class="event-images-section">
+        <div class="main-image">
+            <img [src]="selectedEvent.mainImage || '../../assets/default-event.jpg'" [alt]="selectedEvent.title">
+        </div>
+        <div class="image-gallery">
+            <div class="gallery-item" *ngFor="let image of selectedEvent.images">
+                <img [src]="image" [alt]="selectedEvent.title">
+            </div>
+        </div>
+    </div>
+
+    <!-- Event Content -->
+    <div class="event-content">
+        <div class="event-description">
+            <h2>À propos de l'événement</h2>
+            <p>{{ selectedEvent.description }}</p>
+        </div>
+
+        <div class="event-details">
+            <div class="detail-item">
+                <i class="fas fa-users"></i>
+                <div class="detail-content">
+                    <h3>Participants</h3>
+                    <p>{{ selectedEvent.participants }} personnes</p>
+                </div>
+            </div>
+            <div class="detail-item">
+                <i class="fas fa-clock"></i>
+                <div class="detail-content">
+                    <h3>Durée</h3>
+                    <p>{{ selectedEvent.duration }}</p>
+                </div>
+            </div>
+            <div class="detail-item">
+                <i class="fas fa-tag"></i>
+                <div class="detail-content">
+                    <h3>Catégorie</h3>
+                    <p>{{ selectedEvent.category }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="event-cta">
+            <button class="join-button" (click)="participate(selectedEvent.id)">
+                Participer à l'événement
+            </button>
+            <button class="share-button" (click)="shareEvent(selectedEvent.id)">
+                <i class="fas fa-share-alt"></i> Partager
+            </button>
+        </div>
+    </div>
+</div>

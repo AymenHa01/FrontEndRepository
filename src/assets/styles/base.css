@@ -1,0 +1,35 @@
+/* Variables */
+:root {
+  --primary: #A34343;
+  --secondary: #8B2525;
+  --accent: #C65D5D;
+  --hover: #75A47F;
+  --text-dark: #333;
+  --text-light: #666;
+  --background: #f8f9fa;
+  --card-bg: #ffffff;
+  --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+/* Global Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-visible {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Utility Classes */
+.text-center { text-align: center; }
+.flex { display: flex; }
+.grid { display: grid; }
+.hidden { display: none; }

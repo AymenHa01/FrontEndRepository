@@ -1,0 +1,72 @@
+<app-navbar></app-navbar>
+<div style="height: 60px;"></div>
+
+<div class="main-container">
+  <!-- Title Section -->
+  <h2 class="text-center mb-4">Nos Événements</h2>
+
+  <!-- Search Section -->
+  <div class="search-section">
+    <div class="search-box">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Rechercher un événement..."
+        [(ngModel)]="searchTerm"
+        (ngModelChange)="filterEvenements()"
+      />
+      <button class="search-btn">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Events Grid -->
+  <div class="events-grid">
+    <!-- Show total results -->
+    <p class="text-muted mb-3">
+      {{ filteredEvenements.length }} événement(s) trouvé(s)
+    </p>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col" *ngFor="let evenement of getPagedEvenements()">
+        <div class="event-card">
+          <div class="card">
+            <div class="card-image">
+              <img
+                [src]="'https://karimablogcontainer.blob.core.windows.net/images/'+evenement.image"
+                [alt]="evenement.name"
+              />
+              <div class="card-overlay">
+                <span class="badge">{{ evenement.prix }} dt</span>
+                <span class="date-badge">{{ evenement.dateDebut | date:'dd/MM/yyyy' }} - {{ evenement.dateFin | date:'dd/MM/yyyy' }}</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">{{ evenement.name }}</h3>
+              <div class="card-info">
+                <p><i class="fas fa-calendar"></i> {{ evenement.dateDebut | date }} - {{ evenement.dateFin | date }}</p>
+                <p><i class="fas fa-map-marker-alt"></i> {{ evenement.location || 'À confirmer' }}</p>
+                <p class="description">{{ evenement.Description }}</p>
+              </div>
+              <button class="participate-btn" (click)="viewEventDetails(evenement)">
+                Plus de détails
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination" *ngIf="totalPages > 1">
+      <button class="page-btn" [disabled]="currentPage === 1" (click)="prevPage()">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <span class="page-info">Page {{ currentPage }} sur {{ totalPages }}</span>
+      <button class="page-btn" [disabled]="currentPage === totalPages" (click)="nextPage()">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+</div>

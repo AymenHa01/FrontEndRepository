@@ -1,0 +1,50 @@
+<app-navbar></app-navbar>
+<div style="height: 120px;"></div>
+<h2 class="text-center mb-4">Nos atelier</h2>
+<div class="main-container">
+    <!-- Search Section -->
+    <div class="search-section">
+        <div class="search-box">
+            <input type="text" class="form-control" placeholder="Rechercher un atelier..." [value]="searchTerm" (input)="onSearch($event)">
+            <button class="search-btn">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Ateliers Grid -->
+    <div class="ateliers-grid">
+        <div class="atelier-card" *ngFor="let atelier of filteredAteliers | slice:(currentPage-1) * itemsPerPage:currentPage * itemsPerPage">
+            <div class="card">
+                <div class="card-image">
+                    <img [src]="'https://karimablogcontainer.blob.core.windows.net/images/'+atelier.image" [alt]="atelier.name">
+                    <div class="card-overlay">
+                        <span class="badge">{{ atelier.category }}</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">{{ atelier.name }}</h3>
+                    <div class="card-info">
+                
+                        <p><i class="fas fa-calendar"></i> {{ atelier.startDate | date }}</p>
+                        <p>{{ atelier.description }}</p>
+                    </div>
+                    <button class="participate-btn" (click)="navigateToParticipation(atelier.id)">
+                        voir sous-atelier
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination" *ngIf="totalPages > 1">
+        <button class="page-btn" [disabled]="currentPage === 1" (click)="prevPage()">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <span class="page-info">Page {{ currentPage }} sur {{ totalPages }}</span>
+        <button class="page-btn" [disabled]="currentPage === totalPages" (click)="nextPage()">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+</div>

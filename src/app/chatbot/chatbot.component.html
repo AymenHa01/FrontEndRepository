@@ -1,0 +1,45 @@
+<!-- Floating Chat Button -->
+<button class="chat-toggle-btn" (click)="toggleChat()" [@fadeInOut]>
+    <i class="fas" [class.fa-times]="isChatOpen" [class.fa-comments]="!isChatOpen"></i>
+  </button>
+  
+  <!-- Chat Window -->
+  <div class="chat-window" *ngIf="isChatOpen" [@slideInOut]>
+    <div class="chat-header">
+      <div class="chat-title">
+        <i class="fas fa-robot"></i>
+        <span>Assistant Fortness</span>
+      </div>
+      <button class="minimize-btn" (click)="toggleChat()">
+        <i class="fas fa-minus"></i>
+      </button>
+    </div>
+  
+    <div class="chat-messages" #scrollMe>
+      <div class="message-container" *ngFor="let message of messages" [@fadeInOut]>
+        <div class="message" [ngClass]="{'user-message': message.type === 'user', 'bot-message': message.type === 'bot'}">
+          <div class="message-content">{{ message.content }}</div>
+          <div class="message-time">{{ message.timestamp | date:'HH:mm' }}</div>
+        </div>
+      </div>
+      
+      <!-- Typing Indicator -->
+      <div class="typing-indicator" *ngIf="isTyping" [@fadeInOut]>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+    </div>
+  
+    <div class="chat-input">
+      <input type="text" 
+             [(ngModel)]="newMessage" 
+             (keyup.enter)="sendMessage()"
+             placeholder="Écrivez votre message..."
+             [disabled]="isTyping">
+      <button (click)="sendMessage()" [disabled]="!newMessage.trim() || isTyping">
+        <i class="fas fa-paper-plane"></i>
+      </button>
+    </div>
+  </div>
+  

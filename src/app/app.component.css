@@ -1,0 +1,30 @@
+/* Add these styles to your global styles.css or component CSS */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .content {
+    position: relative;
+    flex: 1;
+    padding-bottom: 80vh; /* Add space for the chatbot */
+  }
+  
+  /* Optional: Reset default margins */
+  body {
+    margin: 0;
+  }
+
+.larger-chatbot {
+  display: block;
+  width: 100% ;/* Increased from fixed 400px */
+  height: 80vh; /* Increased to 80% of viewport height */
+  margin: 20px auto;
+  position: fixed; /* Make it fixed position */
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000; /* Ensure it's above other elements */
+  max-width: 800px; /* Maximum width */
+  min-height: 700px; /* Minimum height */
+}

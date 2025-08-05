@@ -1,0 +1,26 @@
+# Render.com configuration for Angular Universal (SSR)
+
+services:
+  - type: web
+    name: karima-frontend
+    env: node
+    buildCommand: npm install && npm run build:ssr
+    startCommand: node dist/client/server/server.mjs
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: GROQ_API_KEY
+        value: your-groq-api-key-here
+      - key: API_ATELIER_URL
+        value: https://your-backend-url/Atelier
+      - key: API_EVENT_URL
+        value: https://your-backend-url/Evenemet
+      - key: API_SOUS_ATELIER_URL
+        value: https://your-backend-url/api/sous-atelier
+      - key: API_NEWS_URL
+        value: https://your-backend-url/news
+      - key: API_FORMATION_URL
+        value: https://your-backend-url/Formation
+      - key: WEBSOCKET_URL
+        value: wss://your-backend-url/ws
+    plan: free

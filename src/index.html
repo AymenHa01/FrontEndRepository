@@ -1,0 +1,27 @@
+  <script>
+    window.env = {
+      API_ATELIER_URL: window?.API_ATELIER_URL || (typeof process !== 'undefined' ? process.env.API_ATELIER_URL : undefined),
+      API_EVENT_URL: window?.API_EVENT_URL || (typeof process !== 'undefined' ? process.env.API_EVENT_URL : undefined),
+      API_SOUS_ATELIER_URL: window?.API_SOUS_ATELIER_URL || (typeof process !== 'undefined' ? process.env.API_SOUS_ATELIER_URL : undefined),
+      API_NEWS_URL: window?.API_NEWS_URL || (typeof process !== 'undefined' ? process.env.API_NEWS_URL : undefined),
+      API_FORMATION_URL: window?.API_FORMATION_URL || (typeof process !== 'undefined' ? process.env.API_FORMATION_URL : undefined),
+      WEBSOCKET_URL: window?.WEBSOCKET_URL || (typeof process !== 'undefined' ? process.env.WEBSOCKET_URL : undefined)
+    };
+  </script>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Fortness de l'Art</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <!-- Google Fonts - Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <app-root></app-root>
+</body>
+</html>

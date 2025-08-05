@@ -1,0 +1,12 @@
+.container {
+    max-width: 600px;
+    margin: auto;
+}
+
+.text-danger {
+    font-size: 0.875em;
+}
+
+button[disabled] {
+    cursor: not-allowed;
+}

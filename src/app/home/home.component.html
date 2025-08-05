@@ -1,0 +1,366 @@
+<!-- Shared Navbar Component -->
+<app-navbar></app-navbar>
+
+<!-- Progress Bar -->
+<div class="scroll-progress-container">
+  <div class="scroll-progress-bar" [style.width.%]="scrollProgress"></div>
+</div>
+
+<!-- Decorative Elements -->
+<div class="decorative-circle circle-1"></div>
+<div class="decorative-circle circle-2"></div>
+<div class="decorative-square"></div>
+
+<!-- Main Content -->
+<main>
+      <!-- Floating Navigation Sidebar -->
+      <div class="floating-nav">
+          <div class="nav-items">
+              <button (click)="scrollToSection('banner')" [class.active]="activeSection === 'banner'">
+                  <span class="nav-dot"></span>
+                  <span class="nav-label">Accueil</span>
+              </button>
+              <button (click)="scrollToSection('about')" [class.active]="activeSection === 'about'">
+                  <span class="nav-dot"></span>
+                  <span class="nav-label">À propos</span>
+              </button>
+              <button (click)="scrollToSection('planning')" [class.active]="activeSection === 'planning'">
+                  <span class="nav-dot"></span>
+                  <span class="nav-label">Planning</span>
+              </button>
+              <button (click)="scrollToSection('location')" [class.active]="activeSection === 'location'">
+                  <span class="nav-dot"></span>
+                  <span class="nav-label">Location</span>
+              </button>
+              <button (click)="scrollToSection('contact')" [class.active]="activeSection === 'contact'">
+                  <span class="nav-dot"></span>
+                  <span class="nav-label">Contact</span>
+              </button>
+          </div>
+      </div>
+
+      <!-- Banner Section -->
+      <section id="banner" class="section">
+          <img src="../../assets/images/wave1.png" class="banner-bg-img">
+          <div class="container">
+              <div class="row align-items-center">
+                  <div class="col-md-6 video-container text-center floating">
+                      <video width="100%" controls>
+                          <source src="../../assets/images/video11.mp4" type="video/mp4">
+                          Votre navigateur ne prend pas en charge la balise vidéo.
+                      </video>
+                  </div>
+                  <div class="col-md-6 text-center">
+                      <h1>Fortness de l'Art</h1>
+                      <h2>Espace culturel privé d'Art</h2>
+                      <p>On s'amuse, on apprend, on crée</p>
+                      <a id="btn" href="#join" class="btn btn-primary pulsing">Rejoignez-nous</a>
+                  </div>
+              </div>
+          </div>
+          
+        <img src="../../assets/images/wave1.png" class="bottom-img">
+      </section>
+
+      <!-- About Us Section -->
+      <section id="about" class="section">
+          <div class="container">
+              <div class="section-header">
+                  <h4>Qui Sommes-Nous</h4>
+                  <h1>À Propos de Fortness de l'Art</h1>
+              </div>
+              
+              <div class="about-content">
+                  <div class="row">
+                      <div class="col-md-6">
+                          <div class="about-text">
+                              <p class="lead">Fortness de l'Art est un espace culturel dédié à l'exploration et à l'épanouissement artistique pour tous.</p>
+                              <p>Fondé en 2018, notre mission est de rendre l'art accessible à tous, de nourrir la créativité et de bâtir une communauté d'artistes et d'amateurs d'art passionnés. Nous croyons fermement que l'art a le pouvoir de transformer les vies et d'enrichir notre société.</p>
+                              <p>Notre équipe de professionnels passionnés propose une variété d'ateliers, d'expositions et d'événements artistiques conçus pour inspirer, éduquer et divertir les participants de tous âges et de tous niveaux.</p>
+                              
+                              <div class="about-features">
+                                  <div class="feature">
+                                      <i class="fas fa-paint-brush"></i>
+                                      <h3>Ateliers Créatifs</h3>
+                                      <p>Des ateliers pour tous les âges et tous les niveaux, animés par des artistes professionnels.</p>
+                                  </div>
+                                  <div class="feature">
+                                      <i class="fas fa-images"></i>
+                                      <h3>Expositions</h3>
+                                      <p>Découvrez des œuvres d'artistes locaux et internationaux dans notre galerie.</p>
+                                  </div>
+                                  <div class="feature">
+                                      <i class="fas fa-users"></i>
+                                      <h3>Communauté</h3>
+                                      <p>Rejoignez une communauté artistique dynamique et participez à nos événements.</p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      
+                      <div class="col-md-6">
+                          <div class="art-animation-container">
+                              <!-- Animated Art Elements -->
+                              <div class="art-element paintbrush">
+                                  <i class="fas fa-paint-brush"></i>
+                              </div>
+                              <div class="art-element palette">
+                                  <i class="fas fa-palette"></i>
+                              </div>
+                              <div class="art-element pencil">
+                                  <i class="fas fa-pencil-alt"></i>
+                              </div>
+                              <div class="art-element canvas floating">
+                                  <img src="../../assets/images/1.jpg" alt="Art" class="art-image">
+                              </div>
+                              <div class="art-element canvas2">
+                                  <img src="../../assets/images/image2.jpg" alt="Art" class="art-image">
+                              </div>
+                              <div class="art-element canvas3 floating">
+                                  <img src="../../assets/images/t.jpeg" alt="Art" class="art-image">
+                              </div>
+                              
+                              <!-- SVG Art Element -->
+                              <svg class="art-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                                  <path fill="#A34343" d="M48.8,-59.2C62.1,-49.9,71.1,-33.9,73.8,-17.3C76.5,-0.6,72.8,16.6,63.6,29.5C54.4,42.4,39.7,50.9,24.2,56.2C8.8,61.4,-7.4,63.2,-24.6,59.9C-41.8,56.5,-60,47.9,-68.3,33.8C-76.6,19.7,-75.1,0.1,-68.8,-16.4C-62.5,-32.9,-51.4,-46.3,-38.2,-55.5C-25.1,-64.7,-9.9,-69.8,5.1,-75.9C20.2,-82,40.3,-89.1,48.8,-59.2Z" transform="translate(100 100)" class="blob" />
+                              </svg>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+
+      <!-- Planning Section -->
+      <section id="planning" class="section">
+          <div class="container">
+              <div class="section-header">
+                  <h4>Horaires</h4>
+                  <h1>Planning des Activités</h1>
+              </div>
+              
+              <div class="planning-content">
+                  <p class="planning-intro">Découvrez notre programme hebdomadaire d'activités artistiques et sportives. Rejoignez-nous pour des sessions enrichissantes.</p>
+                  
+                  <div class="planning-tables">
+                      <!-- Weekly Schedule Table -->
+                      <div class="schedule-table-container">
+                          <h3><i class="fas fa-calendar-week"></i> Programme Hebdomadaire</h3>
+                          <div class="table-responsive">
+                              <table class="schedule-table">
+                                  <thead>
+                                      <tr>
+                                          <th>Jour</th>
+                                          <th>Activité</th>
+                                          <th>Notes</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      <tr>
+                                          <td><strong>Lundi</strong></td>
+                                          <td>-</td>
+                                          <td>18:00 - 19:00</td>
+                                      </tr>
+                                      <tr>
+                                          <td><strong>Mardi</strong></td>
+                                          <td>كوريو وفيتال + التنفس</td>
+                                          <td>-</td>
+                                      </tr>
+                                      <tr>
+                                          <td><strong>Mercredi</strong></td>
+                                          <td>ووشو + كل الوول + ركبة + تان</td>
+                                          <td>-</td>
+                                      </tr>
+                                      <tr>
+                                          <td><strong>Jeudi</strong></td>
+                                          <td>-</td>
+                                          <td>-</td>
+                                      </tr>
+                                      <tr>
+                                          <td><strong>Vendredi</strong></td>
+                                          <td>كوريو وفيتال + التنفس</td>
+                                          <td>-</td>
+                                      </tr>
+                                      <tr>
+                                          <td><strong>Samedi</strong></td>
+                                          <td>ووشو + الكل + ركبة</td>
+                                          <td>-</td>
+                                      </tr>
+                                      <tr>
+                                          <td><strong>Dimanche</strong></td>
+                                          <td>تكيك بوكس + التنفس + 4</td>
+                                          <td>-</td>
+                                      </tr>
+                                  </tbody>
+                              </table>
+                          </div>
+                      </div>
+
+                      <!-- Daily Time Slots Table -->
+                      <div class="schedule-table-container">
+                          <h3><i class="fas fa-clock"></i> Créneaux Horaires Quotidiens</h3>
+                          <div class="table-responsive">
+                              <table class="schedule-table time-table">
+                                  <thead>
+                                      <tr>
+                                          <th>Horaire</th>
+                                          <th>Lundi</th>
+                                          <th>Mardi</th>
+                                          <th>Mercredi</th>
+                                          <th>Jeudi</th>
+                                          <th>Vendredi</th>
+                                          <th>Samedi</th>
+                                          <th>Dimanche</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      <tr>
+                                          <td class="time-slot"><strong>08:00 - 09:00</strong></td>
+                                          <td>-</td>
+                                          <td>-</td>
+                                          <td>-</td>
+                                          <td>-</td>
+                                          <td>-</td>
+                                          <td>-</td>
+                                          <td>-</td>
+                                      </tr>
+                                      <tr class="active-session">
+                                          <td class="time-slot"><strong>18:00 - 19:00</strong></td>
+                                          <td>تكيك بوكس + التنفس</td>
+                                          <td>ووشو + الكل مع Diamond</td>
+                                          <td>تكيك بوكس + التنفس</td>
+                                          <td>ووشو + الكل + ركبة</td>
+                                          <td>تكيك بوكس + التنفس + 10</td>
+                                          <td>-</td>
+                                          <td>-</td>
+                                      </tr>
+                                  </tbody>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- Additional Info -->
+                  <div class="planning-info">
+                      <div class="info-cards">
+                          <div class="info-card">
+                              <i class="fas fa-info-circle"></i>
+                              <h4>Inscription Requise</h4>
+                              <p>Veuillez vous inscrire à l'avance pour participer aux activités</p>
+                          </div>
+                          <div class="info-card">
+                              <i class="fas fa-users"></i>
+                              <h4>Tous Niveaux</h4>
+                              <p>Nos activités sont adaptées à tous les niveaux, du débutant à l'expert</p>
+                          </div>
+                          <div class="info-card">
+                              <i class="fas fa-phone"></i>
+                              <h4>Contact</h4>
+                              <p>Pour plus d'informations, contactez-nous au +123 456 789</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+
+      <!-- Location Section -->
+      <section id="location" class="section">
+          <div class="container">
+              <div class="section-header">
+                  <h4>Nous trouver</h4>
+                  <h1>Notre Local</h1>
+              </div>
+              <p>Venez nous rendre visite à notre local situé au cœur de la ville. Notre espace est facilement accessible.</p>
+              <div class="map-container floating">
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3233.036818412048!2d10.524456675600849!3d35.87261457252611!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd8c09a890858f%3A0x23980d730f5a0b5b!2sForteresse%20de%20la%20gravure!5e0!3m2!1sfr!2stn!4v1724414136134!5m2!1sfr!2stn" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              </div>
+              <div class="contact-info">
+                  <div class="info-item">
+                      <i class="fas fa-map-marker-alt"></i>
+                      <span>123 Rue de l'Art, Ville, Pays</span>
+                  </div>
+                  <div class="info-item">
+                      <i class="fas fa-phone"></i>
+                      <span>+123 456 789</span>
+                  </div>
+                  <div class="info-item">
+                      <i class="fas fa-envelope"></i>
+                      <span>contactfortness-art.com</span>
+                  </div>
+              </div>            
+          </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="section">
+          <div class="container">
+              <div class="section-header">
+                  <h4>Nous Contacter</h4>
+                  <h1>Restez en Contact</h1>
+              </div>
+              
+              <div class="contact-container">
+                  <div class="row">
+                      <div class="col-md-6">
+                          <div class="contact-info-block">
+                              <h3>Nous serions ravis de vous entendre</h3>
+                              <p>Pour toute question sur nos événements, ateliers ou pour des collaborations artistiques, n'hésitez pas à nous contacter. Notre équipe vous répondra dans les plus brefs délais.</p>
+                              
+                              <div class="contact-details">
+                                  <div class="contact-detail-item">
+                                      <i class="fas fa-phone-alt"></i>
+                                      <div>
+                                          <h4>Téléphone</h4>
+                                          <p>+123 456 789</p>
+                                      </div>
+                                  </div>
+                                  
+                                  <div class="contact-detail-item">
+                                      <i class="fas fa-envelope"></i>
+                                      <div>
+                                          <h4>Email</h4>
+                                          <p>-art.com</p>
+                                      </div>
+                                  </div>
+                                  
+                                  <div class="contact-detail-item">
+                                      <i class="fas fa-clock"></i>
+                                      <div>
+                                          <h4>Heures d'ouverture</h4>
+                                          <p>Lun - Ven: 9h - 18h<br>Sam: 10h - 16h</p>
+                                      </div>
+                                  </div>
+                              </div>
+                              
+                              <div class="social-links">
+                                  <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                                  <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                                  <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                                  <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                              </div>
+                          </div>
+                      </div>
+                      
+                      <div class="col-md-6">
+                          <form class="contact-form">
+                              <div class="form-group">
+                                  <input type="text" placeholder="Votre nom" class="form-control">
+                              </div>
+                              <div class="form-group">
+                                  <input type="email" placeholder="Votre email" class="form-control">
+                              </div>
+                              <div class="form-group">
+                                  <input type="text" placeholder="Sujet" class="form-control">
+                              </div>
+                              <div class="form-group">
+                                  <textarea placeholder="Votre message" class="form-control" rows="5"></textarea>
+                              </div>
+                              <button type="submit" class="submit-btn">Envoyer le message</button>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+  </main>

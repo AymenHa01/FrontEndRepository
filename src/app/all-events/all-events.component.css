@@ -1,0 +1,239 @@
+.event-detail-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Event Header */
+.event-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.event-title {
+    font-size: 2.5rem;
+    color: #A34343;
+    margin-bottom: 15px;
+    font-weight: 600;
+    animation: slideDown 0.6s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.event-meta {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.event-meta span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.event-meta i {
+    color: #A34343;
+}
+
+/* Event Images Section */
+.event-images-section {
+    margin-bottom: 40px;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.main-image {
+    margin-bottom: 20px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.main-image img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.main-image:hover img {
+    transform: scale(1.02);
+}
+
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.gallery-item {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+/* Event Content */
+.event-content {
+    background: #fff;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-out;
+}
+
+.event-description {
+    margin-bottom: 40px;
+}
+
+.event-description h2 {
+    color: #A34343;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.event-description p {
+    color: #444;
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+/* Event Details */
+.event-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+    padding: 30px;
+    background: #f8f8f8;
+    border-radius: 12px;
+}
+
+.detail-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.detail-item i {
+    font-size: 1.5rem;
+    color: #A34343;
+    padding: 12px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.detail-content h3 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.detail-content p {
+    color: #666;
+    font-size: 1rem;
+}
+
+/* Call to Action */
+.event-cta {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.join-button, .share-button {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.join-button {
+    background: #A34343;
+    color: white;
+    min-width: 200px;
+}
+
+.join-button:hover {
+    background: #75A47F;
+    transform: translateY(-2px);
+}
+
+.share-button {
+    background: #f0f0f0;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.share-button:hover {
+    background: #e0e0e0;
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .event-title {
+        font-size: 2rem;
+    }
+
+    .event-meta {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .main-image img {
+        height: 300px;
+    }
+
+    .event-content {
+        padding: 20px;
+    }
+
+    .event-cta {
+        flex-direction: column;
+    }
+
+    .join-button, .share-button {
+        width: 100%;
+    }
+}

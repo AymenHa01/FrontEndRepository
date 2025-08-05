@@ -1,0 +1,86 @@
+<nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+  <div class="container">
+    <!-- Logo Section (Left) -->
+    <a class="navbar-brand" routerLink="/accueil">
+      <img src="../../assets/logoK.png" width="50px" class="navbar-logo" alt="Logo Karima">
+    </a>
+
+    <!-- Hamburger Menu -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <!-- Navigation Links (Center) -->
+      <ul class="navbar-nav main-nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/accueil" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+            <i class="fas fa-home"></i> Accueil
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/actualiter" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+            <i class="fas fa-newspaper"></i> Actualités
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/atelier" routerLinkActive="active-link">
+            <i class="fas fa-paint-brush"></i> Atelier
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/formation" routerLinkActive="active-link">
+            <i class="fas fa-graduation-cap"></i> Formation
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/allevenement" routerLinkActive="active-link">
+            <i class="fas fa-calendar-alt"></i> Événement
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/artist" routerLinkActive="active-link">
+            <i class="fas fa-images"></i> Galerie
+          </a>
+        </li>
+      </ul>
+
+      <!-- Authentication/User Links (Right) -->
+      <ul class="navbar-nav ms-auto auth-nav">
+        <ng-container *ngIf="!isLoggedIn">
+          <li class="nav-item">
+            <a class="auth-link login-btn" routerLink="/login">
+              <i class="fas fa-sign-in-alt"></i> Connexion
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="auth-link signup-btn" routerLink="/signup">
+              <i class="fas fa-user-plus"></i> Inscription
+            </a>
+          </li>
+        </ng-container>
+
+        <ng-container *ngIf="isLoggedIn">
+          <li class="nav-item">
+            <a class="auth-link participation-btn" routerLink="/listParticipation" routerLinkActive="active-link">
+              <i class="fa-solid fa-fire"></i> Participation
+            </a>
+          </li>
+          <li class="nav-item">
+            <div class="user-profile">
+              <div class="user-avatar">
+                <i class="fas fa-user"></i>
+              </div>
+              <span class="user-name">{{ currentUser?.user }}</span>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="auth-link logout-btn" href="javascript:void(0)" (click)="logout()">
+              <i class="fas fa-sign-out-alt"></i> Déconnexion
+            </a>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+  </div>
+</nav>
